@@ -1,0 +1,118 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/core/Container.astro';
+import SectionHeader from '../components/core/SectionHeader.astro';
+import Card from '../components/core/Card.astro';
+import Button from '../components/core/Button.astro';
+import Badge from '../components/core/Badge.astro';
+import PricingTable from '../components/sections/PricingTable.astro';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+import DiagnosisCTA from '../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "Quanto Custa Criar um Site Profissional em 2026? Tabela de Preços | AXION";
+const metaDescription = "Descubra quanto custa criar um site profissional, landing page ou portal institucional. Valores transparentes, comparativo de escopo e retorno sobre investimento.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Quanto Custa Criar um Site', url: '/quanto-custa-criar-um-site' },
+];
+
+const pricingFaqs = [
+  {
+    question: "Quanto custa um site simples versus um site profissional sob medida?",
+    answer: "Um site simples em construtores genéricos pode custar entre R$ 50 a R$ 500 mensais em assinaturas, mas normalmente sofre com lentidão, falta de SEO e baixíssima conversão. Um site profissional sob medida, construído com engenharia moderna (Astro), varia de R$ 2.400 a R$ 12.000+, entregando carregamento em menos de 1s e geração consistente de leads."
+  },
+  {
+    question: "Qual o preço médio para desenvolver uma landing page de alta conversão?",
+    answer: "Uma landing page profissional focada em campanhas de tráfego pago custa entre R$ 1.800 e R$ 4.500, dependendo da complexidade das integrações (Pixel, GA4, automações de CRM e triagem por IA no WhatsApp)."
+  },
+  {
+    question: "Existem custos mensais obrigatórios após a entrega do projeto?",
+    answer: "Na AXION, o código-fonte e o domínio são 100% de propriedade da sua empresa. Os únicos custos recorrentes são os de infraestrutura básica de hospedagem CDN (frequentemente gratuitos ou inferiores a R$ 50/mês para tráfego padrão). Oferecemos planos opcionais de sustentação e produção de conteúdo para quem deseja acelerar o SEO."
+  },
+  {
+    question: "Como o investimento em um site rápido se paga ao longo do tempo?",
+    answer: "Ao atingir Core Web Vitals no verde, a taxa de rejeição cai drasticamente, o que barateia o custo por clique (CPC) em campanhas de tráfego pago e aumenta as posições orgânicas no Google sem necessidade de pagar por cliques."
+  }
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Guia de Precificação</span>
+      </nav>
+
+      <div class="max-w-4xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Transparência Comercial</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Quanto custa criar um site profissional em 2026?
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8">
+          Entenda a composição real de custos de desenvolvimento web no Brasil. Saiba o que esperar de investimento para landing pages, sites institucionais B2B e portais corporativos.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pricing Table Component -->
+  <PricingTable />
+
+  <!-- Breakdown Section -->
+  <section class="py-20 bg-background-deep border-t border-border-subtle">
+    <Container size="lg">
+      <SectionHeader
+        badge="Análise de ROI"
+        title="O custo real de um site lento vs. a economia da engenharia moderna"
+        subtitle="Por que sites baratos em plataformas legadas acabam custando muito mais caro em mídia paga e oportunidades perdidas."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card class="p-8 border-red-500/20">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            O Custo Invisível do Site Barato
+          </h2>
+          <ul class="space-y-4 text-sm text-text-secondary">
+            <li>• <strong>53% dos usuários</strong> desistem de páginas que demoram mais de 3 segundos para abrir no celular.</li>
+            <li>• <strong>Custo por Lead (CPL) 40% mais alto</strong> no Google Ads devido ao baixo Índice de Qualidade da página de destino.</li>
+            <li>• <strong>Perda contínua de posições no Google</strong> após as atualizações de Core Web Vitals e Help Content System.</li>
+            <li>• Manutenção constante com plugins que quebram a cada atualização de versão.</li>
+          </ul>
+        </Card>
+
+        <Card class="p-8 border-emerald-500/20 shadow-glow-sm">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+            O Retorno da Engenharia AXION
+          </h2>
+          <ul class="space-y-4 text-sm text-text-secondary">
+            <li>• <strong>Carregamento sub-segundo (&lt; 0.8s)</strong> retém o visitante e maximiza o aproveitamento de cada clique pago.</li>
+            <li>• <strong>Índice de Qualidade 10/10 no Google Ads</strong> reduzindo o custo por clique e aumentando o volume de leads com o mesmo orçamento.</li>
+            <li>• <strong>Atendimento imediato via WhatsApp com IA</strong> qualificando o lead no instante em que ele demonstra interesse.</li>
+            <li>• <strong>Zero taxa de manutenção forçada</strong> com arquitetura estática imutável e segura.</li>
+          </ul>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion
+    title="Dúvidas sobre Preços e Investimento em Sites"
+    items={pricingFaqs}
+  />
+
+  <DiagnosisCTA />
+</PageLayout>
