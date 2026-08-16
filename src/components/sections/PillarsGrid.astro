@@ -1,0 +1,97 @@
+---
+import Container from '../core/Container.astro';
+import SectionHeader from '../core/SectionHeader.astro';
+import Card from '../core/Card.astro';
+import Button from '../core/Button.astro';
+
+const pillars = [
+  {
+    number: '01',
+    title: 'Sites Ultrarrápidos com Garantia de Core Web Vitals',
+    description: 'Não vendemos promessas subjetivas de velocidade. Entregamos métricas contratadas em verde: LCP < 0.8s, INP < 200ms e CLS < 0.1 no 4G móvel. Sem sobrecarga de plugins ou SPAs pesadas.',
+    badge: 'Performance Garantida',
+    features: ['Arquitetura Astro SSG', 'Compressão AVIF/WebP nativa', 'Zero JavaScript bloqueante'],
+    link: '/solucoes/desenvolvimento-de-sites',
+  },
+  {
+    number: '02',
+    title: 'Design Cinematográfico com Foco em Conversão',
+    description: 'Estética Tech Dark refinada que transmite autoridade imediata sem sacrificar a clareza da proposta de valor. Tipografia legível, microinterações fluidas e contraste estudado.',
+    badge: 'Experiência & Autoridade',
+    features: ['Micro-animações CSS leves', 'Design System modular', 'Hierarquia visual para tomadores de decisão'],
+    link: '/solucoes/site-institucional-b2b',
+  },
+  {
+    number: '03',
+    title: 'Ranqueamento no Google & GEO IA Estrutural',
+    description: 'SEO não é um plugin adicionado no final do projeto. A arquitetura de rotas, semântica HTML5, schemas JSON-LD e dados de entidades são integrados diretamente no código-fonte.',
+    badge: 'Arquitetura de Busca',
+    features: ['Schema.org avançado (JSON-LD)', 'Otimização para busca com IA (GEO)', 'Sitemaps dinâmicos e canonical tags'],
+    link: '/blog/geo-ia-generative-engine-optimization',
+  },
+  {
+    number: '04',
+    title: 'Auditoria de SEO & Diagnóstico-First',
+    description: 'Antes de apresentar qualquer escopo comercial, analisamos os gargalos técnicos do seu domínio atual. Você recebe um laudo com oportunidades claras de performance e ranqueamento.',
+    badge: 'Consultoria Técnica',
+    features: ['Análise de Core Web Vitals reais', 'Mapeamento de palavras-chave comerciais', 'Plano de redirecionamento 301 seguro'],
+    link: '/diagnostico',
+  },
+];
+---
+
+<section class="py-20 md:py-28 border-t border-border-subtle bg-background" id="pilares">
+  <Container size="lg">
+    <SectionHeader
+      badge="Pilares da Engenharia AXION"
+      title="Uma abordagem baseada em dados e engenharia, não em achismos."
+      subtitle="Quatro pilares integrados para transformar o site institucional da sua empresa em um ativo comercial de alto desempenho."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {pillars.map((pillar) => (
+        <Card class="flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-3xl font-mono font-bold text-accent-violet/40 group-hover:text-accent-light transition-colors">
+                {pillar.number}
+              </span>
+              <span class="text-xs font-mono px-3 py-1 rounded-full bg-palette-grey-1100 border border-border-subtle text-accent-light">
+                {pillar.badge}
+              </span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-accent-light transition-colors">
+              {pillar.title}
+            </h3>
+
+            <p class="text-sm sm:text-base text-text-secondary leading-relaxed mb-6">
+              {pillar.description}
+            </p>
+
+            <ul class="space-y-2 mb-8">
+              {pillar.features.map((item) => (
+                <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text-muted">
+                  <svg class="w-4 h-4 text-accent-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-border-subtle/60 flex items-center justify-between">
+            <a
+              href={pillar.link}
+              class="text-xs font-semibold text-accent-light hover:text-white transition-colors flex items-center gap-1.5"
+            >
+              <span>Ver detalhes da solução</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</section>

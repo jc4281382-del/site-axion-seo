@@ -1,0 +1,72 @@
+---
+import Container from '../core/Container.astro';
+import SectionHeader from '../core/SectionHeader.astro';
+import Card from '../core/Card.astro';
+import Badge from '../core/Badge.astro';
+
+const cases = [
+  {
+    category: 'Indústria B2B & Equipamentos',
+    problem: 'Site anterior em WordPress com LCP de 6.4s, sem schema markup e perdendo posições comerciais.',
+    solution: 'Reconstrução completa em Astro SSG, dados estruturados JSON-LD e integração com Agente WhatsApp.',
+    results: [
+      { label: 'PageSpeed Mobile', val: '99/100' },
+      { label: 'Tempo LCP', val: '0.6s' },
+      { label: 'Aumento em Leads Qualificados', val: '+140%' }
+    ]
+  },
+  {
+    category: 'Consultoria Financeira & M&A',
+    problem: 'Alta taxa de rejeição em tráfego de Google Ads devido à lentidão de carregamento no celular.',
+    solution: 'Arquitetura estática leve com Tailwind CSS, sem plugins pesados e formulário integrado de triagem.',
+    results: [
+      { label: 'PageSpeed Mobile', val: '100/100' },
+      { label: 'Redução do Custo por Lead', val: '-42%' },
+      { label: 'CLS (Estabilidade)', val: '0.00' }
+    ]
+  }
+];
+---
+
+<section class="py-20 md:py-28 border-t border-border-subtle bg-background-deep" id="casos">
+  <Container size="lg">
+    <SectionHeader
+      badge="Resultados Comprováveis"
+      title="Casos de engenharia onde números substituem promessas."
+      subtitle="Exemplos práticos de empresas que eliminaram gargalos estruturais e multiplicaram a eficiência de seus canais digitais."
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {cases.map((item) => (
+        <Card class="flex flex-col justify-between">
+          <div>
+            <div class="mb-4">
+              <Badge variant="primary" size="sm">{item.category}</Badge>
+            </div>
+
+            <div class="space-y-4 mb-8 text-sm">
+              <div class="p-3.5 rounded-xl bg-palette-grey-1200/80 border border-border-subtle">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-wider block mb-1">Cenário Anterior</span>
+                <p class="text-text-muted">{item.problem}</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-palette-grey-1200/80 border border-border-subtle">
+                <span class="text-xs font-mono text-accent-light uppercase tracking-wider block mb-1">Solução AXION</span>
+                <p class="text-text-secondary">{item.solution}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-border-subtle grid grid-cols-3 gap-3 text-center">
+            {item.results.map((res) => (
+              <div class="p-2 rounded-lg bg-palette-grey-1100">
+                <div class="text-lg sm:text-xl font-bold font-mono text-emerald-400">{res.val}</div>
+                <div class="text-[10px] sm:text-xs text-text-muted mt-0.5 leading-tight">{res.label}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</section>
