@@ -1,0 +1,45 @@
+---
+import SEOHead from '../components/seo/SEOHead.astro';
+import SchemaOrganization from '../components/seo/SchemaOrganization.astro';
+import '@/styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  author?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  canonicalUrl,
+  type = 'website',
+  publishedTime,
+  author,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR" class="dark scroll-smooth">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      image={image}
+      canonicalUrl={canonicalUrl}
+      type={type}
+      publishedTime={publishedTime}
+      author={author}
+    />
+    <SchemaOrganization />
+    <slot name="schema" />
+  </head>
+  <body class="min-h-screen bg-background text-text-primary flex flex-col selection:bg-accent-violet/30 selection:text-white">
+    <slot />
+  </body>
+</html>

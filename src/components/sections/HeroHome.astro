@@ -1,0 +1,89 @@
+---
+import Container from '../core/Container.astro';
+import Button from '../core/Button.astro';
+import Badge from '../core/Badge.astro';
+---
+
+<section class="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden min-h-[85vh] flex items-center z-0 isolate">
+  <!-- Full Wallpaper Background Image -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <img
+      src="/images/hero-tech.jpg"
+      alt="AXION Web Engineering & AI"
+      class="w-full h-full object-cover object-center lg:object-[75%_center] opacity-75 filter brightness-[0.9] contrast-[1.1]"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Cinematic Wallpaper Overlays for Perfect Text Legibility -->
+  <!-- Horizontal Gradient: Solid dark on left, fading to transparent over the image on right -->
+  <div class="absolute inset-0 z-10 bg-gradient-to-r from-[#07080c] via-[#07080c]/90 sm:via-[#07080c]/75 to-transparent pointer-events-none"></div>
+  
+  <!-- Vertical Fade Gradient: Blends top header and bottom section smoothly into page background -->
+  <div class="absolute inset-0 z-10 bg-gradient-to-b from-[#07080c]/95 via-transparent to-[#07080c] pointer-events-none"></div>
+
+  <!-- Glow Accents over Wallpaper -->
+  <div class="pointer-events-none absolute top-10 left-10 w-[600px] h-[350px] bg-accent-blue/20 rounded-full blur-[140px] z-10"></div>
+  <div class="pointer-events-none absolute bottom-10 right-10 w-[500px] h-[300px] bg-accent-violet/20 rounded-full blur-[120px] z-10"></div>
+
+  <Container size="lg" class="relative z-20">
+    <div class="max-w-3xl text-left">
+      <!-- Live Badge -->
+      <div class="inline-flex items-center gap-2 mb-8">
+        <Badge variant="primary" size="md">
+          <span class="w-2 h-2 rounded-full bg-accent-light animate-ping"></span>
+          Engenharia Web &amp; Metodologia Diagnóstico-First
+        </Badge>
+      </div>
+
+      <!-- Main Declarative Headline -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-8 drop-shadow-lg">
+        Sites institucionais <span class="font-display font-normal italic text-gradient">ultrarrápidos</span>, arquitetados para ranquear no Google.
+      </h1>
+
+      <!-- Direct Subheadline -->
+      <p class="text-lg sm:text-xl md:text-2xl text-text-secondary leading-relaxed max-w-2xl mb-10 font-normal drop-shadow">
+        Reconstruímos sua presença digital com foco em métricas reais: Core Web Vitals no verde, dados estruturados nativos e integração imediata com agente de IA no WhatsApp.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
+        <Button href="/diagnostico" variant="glow" size="lg" id="hero-cta-diagnostico">
+          Solicitar Diagnóstico Gratuito &rarr;
+        </Button>
+        <Button
+          href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20gratuito%20do%20meu%20site"
+          target="_blank"
+          variant="secondary"
+          size="lg"
+          id="hero-cta-whatsapp"
+        >
+          <svg class="w-5 h-5 fill-emerald-400 mr-2 inline" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.782 2.796.782 3.182 0 5.768-2.587 5.768-5.766 0-3.181-2.586-5.768-5.768-5.768zm0 10.378c-.896 0-1.614-.23-2.348-.667l-.168-.1-.082-.049-1.554.408.415-1.515-.098-.155c-.477-.756-.732-1.572-.732-2.435 0-2.54 2.067-4.607 4.608-4.607 2.54 0 4.608 2.067 4.608 4.607 0 2.54-2.068 4.608-4.608 4.608z"/>
+          </svg>
+          Qualificar via WhatsApp
+        </Button>
+      </div>
+
+      <!-- Core Metrics Bar (Glassmorphic Floating Bar) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-2xl bg-glass-card border border-border-subtle shadow-card backdrop-blur-xl">
+        <div class="p-2">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-400">&lt; 0.8s</div>
+          <div class="text-[10px] text-text-muted mt-1 uppercase tracking-widest font-medium">LCP Carregamento</div>
+        </div>
+        <div class="p-2 border-l border-border-subtle">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-accent-light">100/100</div>
+          <div class="text-[10px] text-text-muted mt-1 uppercase tracking-widest font-medium">PageSpeed Score</div>
+        </div>
+        <div class="p-2 border-l border-border-subtle">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-400">0.00</div>
+          <div class="text-[10px] text-text-muted mt-1 uppercase tracking-widest font-medium">CLS Zero Shift</div>
+        </div>
+        <div class="p-2 border-l border-border-subtle">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-accent-secondary">24/7</div>
+          <div class="text-[10px] text-text-muted mt-1 uppercase tracking-widest font-medium">IA WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

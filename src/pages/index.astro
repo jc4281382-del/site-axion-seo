@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroHome from '../components/sections/HeroHome.astro';
+import PillarsGrid from '../components/sections/PillarsGrid.astro';
+import CWVGuarantee from '../components/sections/CWVGuarantee.astro';
+import Differentiators from '../components/sections/Differentiators.astro';
+import SocialProof from '../components/sections/SocialProof.astro';
+import PricingTable from '../components/sections/PricingTable.astro';
+import FAQAccordion from '../components/sections/FAQAccordion.astro';
+import DiagnosisCTA from '../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "AXION — Reconstrução de Sites Institucionais & Core Web Vitals";
+const metaDescription = "Desenvolvemos sites institucionais ultrarrápidos com garantia de Core Web Vitals, arquitetura SEO técnica e integração direta com Agente de IA para WhatsApp.";
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <HeroHome />
+  <PillarsGrid />
+  <CWVGuarantee />
+  <Differentiators />
+  <SocialProof />
+  <PricingTable />
+  <FAQAccordion />
+  <DiagnosisCTA />
+</PageLayout>
