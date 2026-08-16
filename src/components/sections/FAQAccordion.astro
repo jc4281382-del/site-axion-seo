@@ -1,0 +1,72 @@
+---
+import Container from '../core/Container.astro';
+import SectionHeader from '../core/SectionHeader.astro';
+import SchemaFAQ from '../seo/SchemaFAQ.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  badge?: string;
+  items?: Array<{ question: string; answer: string }>;
+}
+
+const defaultFaqs = [
+  {
+    question: "Como a AXION garante pontuação 95+ no Google PageSpeed?",
+    answer: "Utilizamos o framework Astro com renderização estática (SSG) e a estratégia de ilhas de interatividade. Ao contrário do WordPress tradicional, nossas páginas não carregam centenas de scripts bloqueantes ou bibliotecas 3D pesadas. As imagens são servidas em WebP/AVIF com dimensões fixas, garantindo LCP < 0.8s e CLS zero."
+  },
+  {
+    question: "Se eu já tenho um site, vou perder meu ranqueamento atual no Google?",
+    answer: "Não. Como parte do nosso protocolo de engenharia, fazemos uma varredura completa da sua estrutura antiga e configuramos regras de redirecionamento 301 para cada URL indexada. Isso preserva sua autoridade de domínio e transfere o tráfego de forma segura para o novo site."
+  },
+  {
+    question: "Como funciona a integração com o Agente de IA para WhatsApp?",
+    answer: "Configuramos uma ponte inteligente entre os botões de ação do site e um assistente treinado com as informações da sua empresa. O agente atende o cliente instantaneamente 24/7, tira dúvidas sobre serviços, faz a qualificação e agenda a reunião diretamente na sua agenda comercial."
+  },
+  {
+    question: "Qual é o prazo médio de entrega de um site institucional?",
+    answer: "Graças ao nosso fluxo de trabalho moderno com Antigravity e Claude Code, reduzimos o tempo de desenvolvimento para 5 a 15 dias úteis (conforme o escopo acordado), em comparação com as 4 a 8 semanas comuns em agências tradicionais."
+  },
+  {
+    question: "O que é o Diagnóstico Gratuito inicial?",
+    answer: "É uma auditoria técnica sem compromisso onde analisamos seu site atual nos aspectos de Core Web Vitals, conformidade com Schema.org, velocidade em dispositivos móveis e oportunidades de GEO IA (motores de busca gerativa)."
+  }
+];
+
+const {
+  title = "Perguntas Frequentes sobre Engenharia & Prazos",
+  subtitle = "Tire suas dúvidas sobre arquitetura, migração de dados, Core Web Vitals e o processo da AXION.",
+  badge = "FAQ Técnico",
+  items = defaultFaqs,
+} = Astro.props;
+---
+
+<section class="py-20 md:py-28 border-t border-border-subtle bg-background-deep" id="faq">
+  <SchemaFAQ faqs={items} />
+
+  <Container size="md">
+    <SectionHeader
+      badge={badge}
+      title={title}
+      subtitle={subtitle}
+    />
+
+    <div class="space-y-4">
+      {items.map((item, index) => (
+        <details class="group rounded-2xl bg-glass-card border border-border-subtle p-6 transition-all duration-200 open:border-accent-light/30">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-base sm:text-lg text-white group-hover:text-accent-light transition-colors">
+            <span>{item.question}</span>
+            <span class="ml-4 w-6 h-6 rounded-full bg-palette-grey-1100 border border-border-subtle flex items-center justify-center flex-shrink-0 text-text-secondary group-open:rotate-180 transition-transform duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="mt-4 pt-4 border-t border-border-subtle/50 text-sm sm:text-base text-text-secondary leading-relaxed">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </Container>
+</section>

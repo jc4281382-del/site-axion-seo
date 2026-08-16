@@ -1,0 +1,36 @@
+---
+export interface Props {
+  phoneNumber?: string;
+  defaultMessage?: string;
+}
+
+const {
+  phoneNumber = '5511999999999',
+  defaultMessage = 'Olá! Gostaria de fazer um diagnóstico gratuito de performance e SEO no meu site.',
+} = Astro.props;
+
+const encodedMessage = encodeURIComponent(defaultMessage);
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+---
+
+<aside class="fixed bottom-6 right-6 z-40" aria-label="Atendimento via WhatsApp e IA">
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group flex items-center gap-3 bg-palette-grey-1100/90 hover:bg-palette-grey-1000 border border-emerald-500/30 hover:border-emerald-400 p-2 sm:pr-4 rounded-full shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-105"
+    id="floating-whatsapp-widget"
+  >
+    <div class="relative w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-glow-sm">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.782 2.796.782 3.182 0 5.768-2.587 5.768-5.766 0-3.181-2.586-5.768-5.768-5.768zm0 10.378c-.896 0-1.614-.23-2.348-.667l-.168-.1-.082-.049-1.554.408.415-1.515-.098-.155c-.477-.756-.732-1.572-.732-2.435 0-2.54 2.067-4.607 4.608-4.607 2.54 0 4.608 2.067 4.608 4.607 0 2.54-2.068 4.608-4.608 4.608z"/>
+      </svg>
+      <span class="absolute top-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-background rounded-full animate-ping"></span>
+      <span class="absolute top-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-background rounded-full"></span>
+    </div>
+    <div class="hidden sm:flex flex-col text-left">
+      <span class="text-xs font-semibold text-white group-hover:text-emerald-400 transition-colors">Agente IA AXION</span>
+      <span class="text-[10px] text-text-muted">Online 24/7 para Diagnóstico</span>
+    </div>
+  </a>
+</aside>

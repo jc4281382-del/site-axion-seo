@@ -1,0 +1,121 @@
+---
+import Container from '../core/Container.astro';
+import SectionHeader from '../core/SectionHeader.astro';
+import Card from '../core/Card.astro';
+import Button from '../core/Button.astro';
+import Badge from '../core/Badge.astro';
+
+const plans = [
+  {
+    name: 'Landing Page de Alta Conversão',
+    price: 'A partir de R$ 2.400',
+    description: 'Projetada para campanhas de mídia paga (Google Ads, Meta) e lançamentos com foco em conversão imediata.',
+    features: [
+      'Carregamento instantâneo (LCP < 0.8s)',
+      'Integração com Agente de WhatsApp IA',
+      'Pixel Meta, GA4 e GTM configurados',
+      'Design responsivo sem distorções',
+      'Entrega em até 5 dias úteis',
+    ],
+    highlight: false,
+    cta: 'Solicitar LP de Alta Conversão',
+    link: '/diagnostico',
+  },
+  {
+    name: 'Site Institucional B2B Completo',
+    price: 'A partir de R$ 4.800',
+    description: 'A solução definitiva para empresas que precisam de autoridade, ranqueamento no Google e qualificação de leads.',
+    features: [
+      'Tudo da Landing Page',
+      'Estrutura multi-páginas (Home, Soluções, Sobre, Contato)',
+      'Schema Markup avançado (JSON-LD Organization e Services)',
+      'Mapeamento 301 de URLs antigas',
+      'Blog integrado para SEO contínuo',
+      'Garantia de 95+ no Google PageSpeed',
+    ],
+    highlight: true,
+    badge: 'Mais Escolhido',
+    cta: 'Solicitar Projeto Institucional',
+    link: '/diagnostico',
+  },
+  {
+    name: 'Ecossistema Digital & Conteúdo Mensal',
+    price: 'Sob Consulta',
+    description: 'Para empresas que buscam dominância no nicho com publicações técnicas contínuas, manutenção e otimizações de GEO IA.',
+    features: [
+      'Site Institucional completo',
+      'Produção mensal de artigos técnicos originais',
+      'Monitoramento contínuo de Core Web Vitals',
+      'Treinamento e evolução do Agente IA no WhatsApp',
+      'Dashboard executivo de performance e leads',
+    ],
+    highlight: false,
+    cta: 'Consultar Ecossistema',
+    link: '/diagnostico',
+  },
+];
+---
+
+<section class="py-20 md:py-28 border-t border-border-subtle bg-background" id="precificacao">
+  <Container size="lg">
+    <SectionHeader
+      badge="Transparência &amp; Investimento"
+      title="Precificação clara. Sem custos ocultos ou dependências de plugins."
+      subtitle="Valores de referência para soluções completas de engenharia web. Todo projeto inicia com diagnóstico técnico sem custo."
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      {plans.map((plan) => (
+        <Card
+          class:list={[
+            "flex flex-col justify-between relative",
+            plan.highlight ? "border-accent-violet/50 bg-palette-grey-1100/90 shadow-glow-sm" : ""
+          ]}
+        >
+          {plan.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <Badge variant="primary" size="md">{plan.badge}</Badge>
+            </div>
+          )}
+
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">{plan.name}</h3>
+            <p class="text-xs text-text-secondary mb-6 min-h-[36px]">{plan.description}</p>
+            
+            <div class="mb-6 pb-6 border-b border-border-subtle">
+              <span class="text-2xl sm:text-3xl font-bold font-mono text-white">{plan.price}</span>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-sm">
+              {plan.features.map((feat) => (
+                <li class="flex items-start gap-2.5 text-text-muted">
+                  <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-xs sm:text-sm text-text-secondary">{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-border-subtle">
+            <Button
+              href={plan.link}
+              variant={plan.highlight ? 'glow' : 'secondary'}
+              size="md"
+              class="w-full"
+            >
+              {plan.cta}
+            </Button>
+          </div>
+        </Card>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/quanto-custa-criar-um-site" class="text-xs sm:text-sm text-accent-light hover:text-white transition-colors underline underline-offset-4">
+        Leia nosso guia completo sobre quanto custa criar um site profissional em 2026 &rarr;
+      </a>
+    </div>
+  </Container>
+</section>

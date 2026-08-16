@@ -1,0 +1,47 @@
+---
+export interface Props {
+  name: string;
+  description: string;
+  serviceType: string;
+  providerName?: string;
+}
+
+const {
+  name,
+  description,
+  serviceType,
+  providerName = 'AXION',
+} = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": name,
+  "serviceType": serviceType,
+  "description": description,
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": providerName,
+    "url": "https://axion.com.br"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brazil"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Engenharia Web AXION",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": name
+        }
+      }
+    ]
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

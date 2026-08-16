@@ -1,0 +1,32 @@
+---
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AXION",
+  "alternateName": "AXION Desenvolvimento & Engenharia Web",
+  "url": "https://axion.com.br",
+  "logo": "https://axion.com.br/favicon.svg",
+  "description": "Engenharia de sites ultra-rápidos, arquitetura para Core Web Vitals, SEO estrutural e automações de IA.",
+  "priceRange": "$$",
+  "telephone": "+55-11-99999-9999",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BR"
+  },
+  "knowsAbout": [
+    "Astro Framework",
+    "Tailwind CSS",
+    "Core Web Vitals",
+    "Search Engine Optimization (SEO)",
+    "Generative Engine Optimization (GEO)",
+    "Desenvolvimento de Sites Institucionais",
+    "Agentes de IA para WhatsApp"
+  ],
+  "sameAs": [
+    "https://github.com/axion",
+    "https://linkedin.com/company/axion"
+  ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
