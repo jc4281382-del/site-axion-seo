@@ -1,0 +1,54 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/core/Container.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+
+const metaTitle = "Termos de Serviço | AXION";
+const metaDescription = "Termos e condições de prestação de serviços de engenharia web, desenvolvimento e consultoria técnica da AXION.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Termos de Serviço', url: '/termos' },
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <article class="pt-20 pb-24 md:pt-28 md:pb-32 bg-background">
+    <Container size="md">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Termos de Serviço</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8">
+        Termos de Serviço
+      </h1>
+
+      <div class="prose prose-invert max-w-none text-text-secondary space-y-6 text-sm sm:text-base leading-relaxed">
+        <p>
+          Estes Termos de Serviço regem o uso do site institucional da <strong>AXION</strong> e a contratação de nossos serviços de desenvolvimento, engenharia de software e consultoria técnica.
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">1. Diagnóstico Gratuito</h2>
+        <p>
+          O diagnóstico técnico inicial fornecido pela AXION é uma análise preliminar baseada em dados públicos e ferramentas automatizadas de mensuração (Google PageSpeed, CrUX, Schema.org). O laudo não gera obrigação de contratação mútua.
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">2. Propriedade Intelectual &amp; Código-Fonte</h2>
+        <p>
+          Após a quitação integral do projeto contratado, a titularidade e o código-fonte desenvolvido sob medida são transferidos para o cliente, sem taxas de licenciamento ocultas ou retenção indevida de acessos.
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">3. Garantias de Performance (Core Web Vitals)</h2>
+        <p>
+          A garantia de pontuação no Core Web Vitals aplica-se ao código entregue em conformidade com as especificações contratuais e sob as condições padrão de ambiente de hospedagem acordadas. Modificações posteriores de terceiros ou inclusão de scripts pesados pelo cliente podem impactar as métricas.
+        </p>
+      </div>
+    </Container>
+  </article>
+</PageLayout>

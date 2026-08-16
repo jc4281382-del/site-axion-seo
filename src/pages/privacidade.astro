@@ -1,0 +1,64 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/core/Container.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+
+const metaTitle = "Política de Privacidade | AXION";
+const metaDescription = "Política de privacidade e proteção de dados da AXION em conformidade com a Lei Geral de Proteção de Dados (LGPD).";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Política de Privacidade', url: '/privacidade' },
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <article class="pt-20 pb-24 md:pt-28 md:pb-32 bg-background">
+    <Container size="md">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Privacidade</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8">
+        Política de Privacidade
+      </h1>
+
+      <div class="prose prose-invert max-w-none text-text-secondary space-y-6 text-sm sm:text-base leading-relaxed">
+        <p>
+          A <strong>AXION</strong> está comprometida com a proteção dos dados pessoais de seus usuários e clientes, em conformidade estrita com a Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018).
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">1. Coleta de Informações</h2>
+        <p>
+          Coletamos exclusivamente os dados fornecidos voluntariamente através do formulário de Diagnóstico Técnico ou canais de atendimento via WhatsApp (como nome, empresa, e-mail corporativo, telefone e URL do domínio a ser auditado).
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">2. Finalidade do Tratamento de Dados</h2>
+        <p>
+          Os dados coletados destinam-se exclusivamente a:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Elaboração e envio do laudo de auditoria técnica de performance e SEO;</li>
+          <li>Comunicação direta com o solicitante para esclarecimento de dúvidas e apresentação de propostas comerciais;</li>
+          <li>Aprimoramento contínuo de nossos serviços e segurança de infraestrutura.</li>
+        </ul>
+
+        <h2 class="text-xl font-bold text-white pt-4">3. Não Compartilhamento com Terceiros</h2>
+        <p>
+          A AXION não comercializa, não aluga e não compartilha seus dados pessoais ou comerciais com empresas terceiras para fins de publicidade.
+        </p>
+
+        <h2 class="text-xl font-bold text-white pt-4">4. Seus Direitos (LGPD)</h2>
+        <p>
+          Você tem o direito de solicitar a confirmação, o acesso, a correção ou a exclusão definitiva de seus dados a qualquer momento, bastando entrar em contato através de nossos canais oficiais de comunicação.
+        </p>
+      </div>
+    </Container>
+  </article>
+</PageLayout>

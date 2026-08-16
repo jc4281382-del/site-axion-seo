@@ -1,0 +1,48 @@
+---
+import Container from '../core/Container.astro';
+import Button from '../core/Button.astro';
+import Badge from '../core/Badge.astro';
+---
+
+<section class="py-20 md:py-28 border-t border-border-subtle bg-background relative overflow-hidden" id="diagnostico-cta">
+  <div class="pointer-events-none absolute inset-0 bg-radial-glow opacity-80"></div>
+
+  <Container size="lg">
+    <div class="rounded-3xl bg-gradient-to-b from-palette-grey-1100 via-palette-grey-1100/90 to-palette-grey-1200 border border-accent-violet/30 p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden shadow-card">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-6">
+          <Badge variant="primary" size="md">Auditoria Técnica Sem Custo</Badge>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Descubra exatamente onde seu site atual está perdendo posições e clientes.
+        </h2>
+
+        <p class="text-base sm:text-lg text-text-secondary mb-10 leading-relaxed max-w-2xl mx-auto">
+          Auditamos seu domínio em menos de 24 horas: laudo completo de Core Web Vitals, conformidade de Schema Markup e oportunidades reais de GEO IA.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href="/diagnostico" variant="glow" size="lg" id="cta-section-diagnostico">
+            Solicitar Laudo Técnico Gratuito &rarr;
+          </Button>
+          <Button
+            href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20gratuito%20do%20meu%20site"
+            target="_blank"
+            variant="secondary"
+            size="lg"
+            id="cta-section-whatsapp"
+          >
+            Falar pelo WhatsApp com o Especialista
+          </Button>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-text-muted">
+          <span>✓ Sem compromisso comercial</span>
+          <span>✓ Laudo entregue em 24h</span>
+          <span>✓ Análise de Core Web Vitals reais</span>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

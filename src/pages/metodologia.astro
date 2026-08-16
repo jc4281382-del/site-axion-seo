@@ -1,0 +1,130 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/core/Container.astro';
+import SectionHeader from '../components/core/SectionHeader.astro';
+import Card from '../components/core/Card.astro';
+import Button from '../components/core/Button.astro';
+import Badge from '../components/core/Badge.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+import DiagnosisCTA from '../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "Metodologia Diagnóstico-First & Engenharia Ágil | AXION";
+const metaDescription = "Conheça a metodologia da AXION: auditoria técnica prévia, eliminação de código legado, garantia contratual de Core Web Vitals e ciclo acelerado com Antigravity e Claude Code.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Metodologia', url: '/metodologia' },
+];
+
+const steps = [
+  {
+    step: '01',
+    title: 'Auditoria & Diagnóstico de Entrada',
+    desc: 'Não enviamos propostas genéricas no escuro. Analisamos os dados reais do seu domínio: Core Web Vitals no ambiente móvel, falhas de rastreamento no Search Console, concorrência direta de palavras-chave e integridade de metadados.'
+  },
+  {
+    step: '02',
+    title: 'Arquitetura Limpa & Zero Código Legado',
+    desc: 'Não adaptamos templates prontos nem herdamos problemas estruturais antigos. Projetamos a estrutura do zero utilizando Astro e Tailwind CSS, garantindo que cada linha de código tenha um propósito claro e mensurável.'
+  },
+  {
+    step: '03',
+    title: 'Ciclo Acelerado com Antigravity & Claude Code',
+    desc: 'Utilizamos as ferramentas de inteligência artificial mais avançadas para automação de testes, validação de acessibilidade e refatoração de código. O que agências tradicionais levam 6 semanas para entregar, implementamos em dias com padrão internacional de qualidade.'
+  },
+  {
+    step: '04',
+    title: 'Mapeamento 301 & Blindagem de SEO',
+    desc: 'Se sua empresa já possui relevância orgânica, executamos um inventário exaustivo de URLs para redirecionamento 301. Nenhum link antigo é quebrado e sua autoridade histórica é integralmente transferida para a nova versão.'
+  },
+  {
+    step: '05',
+    title: 'Integração Comercial & Agente de IA',
+    desc: 'Configuramos o rastreamento no GA4 e Tag Manager e conectamos o site ao Agente de IA para WhatsApp. O site é lançado operando como um canal ativo de triagem e agendamento de reuniões comerciais.'
+  }
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Metodologia</span>
+      </nav>
+
+      <div class="max-w-4xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Engenharia &amp; Processos</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Metodologia Diagnóstico-First: o trabalho fala por si só.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8">
+          Eliminamos reuniões intermináveis de alinhamento abstrato e discursos institucionais vazios. Nosso processo é fundamentado em dados técnicos auditáveis, velocidade de execução e retorno mensurável.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Steps Process -->
+  <section class="py-20 bg-background-deep">
+    <Container size="lg">
+      <SectionHeader
+        badge="Etapas do Processo"
+        title="Do diagnóstico à entrega em produção: como operamos"
+        subtitle="Um fluxo linear e transparente onde cada fase possui entregáveis técnicos claros e auditados."
+      />
+
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {steps.map((item) => (
+          <Card class="p-8 flex flex-col sm:flex-row items-start gap-6">
+            <div class="text-3xl sm:text-4xl font-mono font-bold text-accent-light flex-shrink-0">
+              {item.step}
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white mb-2">{item.title}</h2>
+              <p class="text-sm sm:text-base text-text-secondary leading-relaxed">{item.desc}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Principles Section -->
+  <section class="py-20 bg-background border-t border-border-subtle">
+    <Container size="lg">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="p-8">
+          <h3 class="text-lg font-bold text-white mb-3">Sem Retórica Vazia</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Não prometemos 'magia digital'. Prometemos LCP inferior a 0.8s, pontuação 95+ no PageSpeed e marcação de Schema.org validada.
+          </p>
+        </Card>
+
+        <Card class="p-8">
+          <h3 class="text-lg font-bold text-white mb-3">Autonomia para o Cliente</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            O repositório e o domínio são seus. Não criamos travas proprietárias que forçam você a pagar mensalidades de licença para manter seu site no ar.
+          </p>
+        </Card>
+
+        <Card class="p-8">
+          <h3 class="text-lg font-bold text-white mb-3">Engenharia de Vanguarda</h3>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Adotamos ferramentas de ponta (Astro, Tailwind, GEO IA e automações no WhatsApp) para manter sua empresa anos à frente dos concorrentes.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <DiagnosisCTA />
+</PageLayout>

@@ -1,0 +1,164 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/core/Container.astro';
+import Card from '../components/core/Card.astro';
+import Button from '../components/core/Button.astro';
+import Badge from '../components/core/Badge.astro';
+import SchemaBreadcrumbs from '../components/seo/SchemaBreadcrumbs.astro';
+
+const metaTitle = "Diagnóstico Técnico Gratuito de SEO & Core Web Vitals | AXION";
+const metaDescription = "Solicite uma auditoria técnica gratuita do seu site: análise de velocidade (LCP, INP, CLS), erros de rastreamento no Google, dados estruturados e oportunidades de GEO IA.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Diagnóstico Gratuito', url: '/diagnostico' },
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <section class="pt-20 pb-24 md:pt-28 md:pb-32 bg-background relative overflow-hidden">
+    <div class="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent-blue/15 rounded-full blur-[140px] -z-10"></div>
+
+    <Container size="md">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Diagnóstico Gratuito</span>
+      </nav>
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="mb-4 inline-block">
+          <Badge variant="primary" size="md">Sem Custo &bull; Resposta em 24h</Badge>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+          Diagnóstico Técnico de Performance &amp; SEO
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Informe os dados da sua empresa para receber um laudo analítico sobre velocidade no 4G móvel, integridade de schemas e oportunidades de ranqueamento.
+        </p>
+      </div>
+
+      <!-- Conversion Card / Form -->
+      <Card class="p-8 sm:p-12 border-accent-violet/30 bg-palette-grey-1100/90 shadow-card">
+        <form id="diagnostico-form" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="empresa" class="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">
+                Nome da Empresa / Solicitante *
+              </label>
+              <input
+                type="text"
+                id="empresa"
+                name="empresa"
+                required
+                placeholder="Ex: Tech Solutions Ltda"
+                class="w-full px-4 py-3 rounded-xl bg-palette-grey-1200 border border-border-subtle text-white text-sm focus:outline-none focus:border-accent-light focus:ring-1 focus:ring-accent-light transition-all placeholder:text-text-muted"
+              />
+            </div>
+
+            <div>
+              <label for="site" class="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">
+                URL do Site Atual (ou "Novo Projeto") *
+              </label>
+              <input
+                type="text"
+                id="site"
+                name="site"
+                required
+                placeholder="Ex: https://suaempresa.com.br"
+                class="w-full px-4 py-3 rounded-xl bg-palette-grey-1200 border border-border-subtle text-white text-sm focus:outline-none focus:border-accent-light focus:ring-1 focus:ring-accent-light transition-all placeholder:text-text-muted"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="desafio" class="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">
+              Principal Objetivo ou Desafio *
+            </label>
+            <select
+              id="desafio"
+              name="desafio"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-palette-grey-1200 border border-border-subtle text-white text-sm focus:outline-none focus:border-accent-light focus:ring-1 focus:ring-accent-light transition-all"
+            >
+              <option value="Velocidade e Core Web Vitals lentos">O site atual é lento / reprovado no Core Web Vitals</option>
+              <option value="Reconstrução completa do zero">Preciso reconstruir o site do zero com tecnologia moderna</option>
+              <option value="Ranqueamento e SEO no Google">Quero melhorar meu ranqueamento orgânico no Google (SEO)</option>
+              <option value="Aumentar conversão de leads e tráfego pago">Quero reduzir o custo por lead e aumentar conversões</option>
+              <option value="Criar um novo site institucional">Criar um novo site institucional para nova empresa</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="whatsapp" class="block text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">
+              WhatsApp para Envio do Laudo Técnico *
+            </label>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              required
+              placeholder="Ex: (11) 99999-9999"
+              class="w-full px-4 py-3 rounded-xl bg-palette-grey-1200 border border-border-subtle text-white text-sm focus:outline-none focus:border-accent-light focus:ring-1 focus:ring-accent-light transition-all placeholder:text-text-muted"
+            />
+          </div>
+
+          <div class="pt-4">
+            <Button
+              type="submit"
+              variant="glow"
+              size="lg"
+              class="w-full"
+              id="submit-diagnostico-btn"
+            >
+              Gerar Laudo Técnico via WhatsApp &rarr;
+            </Button>
+          </div>
+
+          <div class="flex items-center justify-center gap-4 text-xs text-text-muted text-center pt-2">
+            <span>🔒 Seus dados não são compartilhados</span>
+            <span>⚡ Laudo entregue por especialista técnico</span>
+          </div>
+        </form>
+      </Card>
+
+      <!-- Security / Methodology notes -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs text-text-muted">
+        <div class="p-4 rounded-xl bg-palette-grey-1100/50 border border-border-subtle">
+          <strong class="text-white block mb-1">Métricas Auditadas</strong>
+          LCP, INP, CLS, TTFB e pontuação PageSpeed Insights.
+        </div>
+        <div class="p-4 rounded-xl bg-palette-grey-1100/50 border border-border-subtle">
+          <strong class="text-white block mb-1">Auditoria de SEO</strong>
+          Hierarquia semântica, meta tags e dados estruturados JSON-LD.
+        </div>
+        <div class="p-4 rounded-xl bg-palette-grey-1100/50 border border-border-subtle">
+          <strong class="text-white block mb-1">GEO &amp; Inteligência Artificial</strong>
+          Avaliação de compatibilidade para buscas no Google Gemini e SGE.
+        </div>
+      </div>
+    </Container>
+  </section>
+</PageLayout>
+
+<script>
+  const form = document.getElementById('diagnostico-form') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const empresa = formData.get('empresa') || '';
+      const site = formData.get('site') || '';
+      const desafio = formData.get('desafio') || '';
+      const whatsapp = formData.get('whatsapp') || '';
+
+      const msg = `Olá! Gostaria do diagnóstico gratuito da AXION.%0A%0A*Empresa:* ${encodeURIComponent(String(empresa))}%0A*Site:* ${encodeURIComponent(String(site))}%0A*Objetivo:* ${encodeURIComponent(String(desafio))}%0A*WhatsApp:* ${encodeURIComponent(String(whatsapp))}`;
+      
+      window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+    });
+  }
+</script>

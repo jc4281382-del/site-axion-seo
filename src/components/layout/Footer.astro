@@ -1,0 +1,113 @@
+---
+import Container from '../core/Container.astro';
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  solucoes: [
+    { name: 'Desenvolvimento de Sites', href: '/solucoes/desenvolvimento-de-sites' },
+    { name: 'Sites Institucionais B2B', href: '/solucoes/site-institucional-b2b' },
+    { name: 'Core Web Vitals & Performance', href: '/solucoes#performance' },
+    { name: 'Auditoria de SEO & GEO IA', href: '/solucoes#seo' },
+  ],
+  empresa: [
+    { name: 'Metodologia Diagnóstico-First', href: '/metodologia' },
+    { name: 'Guia de Precificação Real', href: '/quanto-custa-criar-um-site' },
+    { name: 'Diagnóstico Gratuito', href: '/diagnostico' },
+    { name: 'Blog Técnico', href: '/blog' },
+  ],
+  legal: [
+    { name: 'Política de Privacidade', href: '/privacidade' },
+    { name: 'Termos de Serviço', href: '/termos' },
+  ]
+};
+---
+
+<footer class="border-t border-border-subtle bg-background-deep pt-16 pb-12">
+  <Container size="full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-border-subtle">
+      <!-- Coluna Marca -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-palette-grey-1100 border border-border-subtle flex items-center justify-center">
+            <svg class="w-5 h-5" viewBox="0 0 32 32" fill="none">
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#052FF0" />
+                  <stop offset="100%" stop-color="#7133ED" />
+                </linearGradient>
+              </defs>
+              <path d="M7 23L16 9L25 23H20.5L16 16L11.5 23H7Z" fill="url(#footerLogoGrad)" />
+            </svg>
+          </div>
+          <span class="text-xl font-bold tracking-wider text-white">AXION</span>
+        </a>
+        <p class="text-sm text-text-secondary max-w-sm leading-relaxed">
+          Engenharia web de alto impacto. Construímos sites institucionais ultra-rápidos, desenhados para Core Web Vitals e integrados nativamente com automações de IA.
+        </p>
+        <div class="flex items-center gap-2 text-xs text-emerald-400 font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Core Web Vitals SLA: 100% de conformidade</span>
+        </div>
+      </div>
+
+      <!-- Links Soluções -->
+      <div>
+        <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Soluções</h3>
+        <ul class="space-y-2.5 text-sm">
+          {footerLinks.solucoes.map((link) => (
+            <li>
+              <a href={link.href} class="text-text-secondary hover:text-white transition-colors">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links Empresa -->
+      <div>
+        <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Metodologia</h3>
+        <ul class="space-y-2.5 text-sm">
+          {footerLinks.empresa.map((link) => (
+            <li>
+              <a href={link.href} class="text-text-secondary hover:text-white transition-colors">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal & Contato -->
+      <div>
+        <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Institucional</h3>
+        <ul class="space-y-2.5 text-sm">
+          {footerLinks.legal.map((link) => (
+            <li>
+              <a href={link.href} class="text-text-secondary hover:text-white transition-colors">
+                {link.name}
+              </a>
+            </li>
+          ))}
+          <li class="pt-2">
+            <a
+              href="https://wa.me/5511999999999"
+              target="_blank"
+              class="text-accent-light hover:text-white transition-colors font-medium flex items-center gap-1.5"
+            >
+              <span>Canal Direto WhatsApp</span>
+              <span>&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+      <p>&copy; {currentYear} AXION. Todos os direitos reservados. Reconstruído do zero com Astro.</p>
+      <p class="font-mono">Desenvolvido com foco absoluto em LCP &lt; 0.8s</p>
+    </div>
+  </Container>
+</footer>

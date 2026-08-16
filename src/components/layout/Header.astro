@@ -1,0 +1,115 @@
+---
+import Container from '../core/Container.astro';
+import Button from '../core/Button.astro';
+
+const navLinks = [
+  { name: 'Soluções', href: '/solucoes' },
+  { name: 'Precificação', href: '/quanto-custa-criar-um-site' },
+  { name: 'Metodologia', href: '/metodologia' },
+  { name: 'Blog', href: '/blog' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-border-subtle bg-background/80 backdrop-blur-xl transition-all duration-300">
+  <Container size="full">
+    <div class="flex h-20 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group" aria-label="AXION Home">
+        <div class="w-10 h-10 rounded-xl bg-palette-grey-1100 border border-border-subtle flex items-center justify-center group-hover:border-accent-light/40 transition-colors shadow-glow-sm">
+          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#052FF0" />
+                <stop offset="100%" stop-color="#7133ED" />
+              </linearGradient>
+            </defs>
+            <path d="M7 23L16 9L25 23H20.5L16 16L11.5 23H7Z" fill="url(#logoGrad)" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold tracking-wider text-white">AXION</span>
+          <span class="text-[10px] tracking-widest text-text-muted font-mono uppercase">Web Engineering</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 bg-palette-grey-1100/60 border border-border-subtle px-4 py-1.5 rounded-full" aria-label="Navegação Principal">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
+                isActive
+                  ? "text-white bg-white/10 shadow-sm"
+                  : "text-text-secondary hover:text-white hover:bg-white/5"
+              ]}
+            >
+              {link.name}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <Button href="/diagnostico" variant="secondary" size="sm">
+          Diagnóstico Gratuito
+        </Button>
+        <Button
+          href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20o%20desenvolvimento%20do%20meu%20site"
+          target="_blank"
+          variant="primary"
+          size="sm"
+          id="header-whatsapp-cta"
+        >
+          Falar com IA
+        </Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2.5 rounded-xl border border-border-subtle bg-palette-grey-1100 text-text-secondary hover:text-white"
+        aria-label="Abrir Menu de Navegação"
+        aria-expanded="false"
+      >
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border-subtle py-4 space-y-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block px-4 py-2.5 text-base font-medium rounded-lg text-text-secondary hover:text-white hover:bg-white/5"
+        >
+          {link.name}
+        </a>
+      ))}
+      <div class="pt-4 border-t border-border-subtle flex flex-col gap-2.5">
+        <Button href="/diagnostico" variant="secondary" size="md" class="w-full">
+          Diagnóstico Gratuito
+        </Button>
+        <Button
+          href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20o%20desenvolvimento%20do%20meu%20site"
+          target="_blank"
+          variant="primary"
+          size="md"
+          class="w-full"
+        >
+          Falar com IA no WhatsApp
+        </Button>
+      </div>
+    </div>
+  </Container>
+</header>
