@@ -1,0 +1,130 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/core/Container.astro';
+import SectionHeader from '../../components/core/SectionHeader.astro';
+import Card from '../../components/core/Card.astro';
+import Button from '../../components/core/Button.astro';
+import Badge from '../../components/core/Badge.astro';
+import SchemaService from '../../components/seo/SchemaService.astro';
+import SchemaBreadcrumbs from '../../components/seo/SchemaBreadcrumbs.astro';
+import FAQAccordion from '../../components/sections/FAQAccordion.astro';
+import DiagnosisCTA from '../../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "Desenvolvimento de Sites Profissionais e Ultrarrápidos | AXION";
+const metaDescription = "Criação de sites profissionais com tecnologia moderna (Astro + Tailwind CSS). Garantia de Core Web Vitals no verde, carregamento em menos de 1s e SEO estrutural.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Soluções', url: '/solucoes' },
+  { name: 'Desenvolvimento de Sites', url: '/solucoes/desenvolvimento-de-sites' },
+];
+
+const faqs = [
+  {
+    question: "O que diferencia a criação de sites da AXION de uma agência tradicional?",
+    answer: "Trabalhamos com engenharia estática moderna (Astro Framework) em vez de plataformas inchadas em WordPress com dezenas de plugins de terceiros. Isso significa carregamento instantâneo, zero vulnerabilidade de CMS e dados estruturados integrados nativamente."
+  },
+  {
+    question: "Qual o impacto do Core Web Vitals no Google Ads e tráfego orgânico?",
+    answer: "Páginas com LCP abaixo de 1 segundo reduzem a taxa de rejeição de visitantes em até 50%. No Google Ads, uma página ultrarrápida eleva o Índice de Qualidade (Quality Score), reduzindo o custo por clique (CPC) e barateando o custo por lead."
+  },
+  {
+    question: "Como é feita a entrega e manutenção do site?",
+    answer: "O código é 100% de propriedade do cliente, hospedado em infraestruturas globais de alta disponibilidade (CDN). Oferecemos planos opcionais de sustentação com produção de conteúdo original e monitoramento contínuo de Core Web Vitals."
+  }
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaService
+      name="Desenvolvimento e Criação de Sites Profissionais"
+      serviceType="Web Engineering & Performance"
+      description={metaDescription}
+    />
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background relative overflow-hidden">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/solucoes" class="hover:text-white transition-colors">Soluções</a>
+        <span>/</span>
+        <span class="text-text-secondary">Desenvolvimento de Sites</span>
+      </nav>
+
+      <div class="max-w-4xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Engenharia Web de Alta Performance</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Desenvolvimento de sites profissionais com velocidade e arquitetura sem concessões.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8">
+          Criamos sites institucionais limpos, leves e arquitetados para responder em milissegundos. Eliminamos o código legado e entregamos um ativo digital pronto para converter tráfego em oportunidades reais.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <Button href="/diagnostico" variant="glow" size="lg">
+            Diagnóstico do seu Site Atual &rarr;
+          </Button>
+          <Button
+            href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20o%20desenvolvimento%20de%20um%20site%20profissional"
+            target="_blank"
+            variant="secondary"
+            size="lg"
+          >
+            Falar pelo WhatsApp
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pilar de Engenharia -->
+  <section class="py-20 bg-background-deep">
+    <Container size="lg">
+      <SectionHeader
+        badge="Tecnologia &amp; Padrões"
+        title="Por que o framework Astro supera plataformas monolíticas tradicionais"
+        subtitle="Entenda as vantagens arquiteturais de uma abordagem Static-First com ilhas de interatividade mínimas."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="p-6 sm:p-8">
+          <div class="text-3xl font-mono text-emerald-400 font-bold mb-4">01</div>
+          <h2 class="text-xl font-bold text-white mb-3">Zero JavaScript no Cliente</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            O HTML é pré-renderizado no servidor de build. O navegador do visitante recebe uma página pura e leve, sem atrasos de interpretação de scripts ou travamentos no mobile.
+          </p>
+        </Card>
+
+        <Card class="p-6 sm:p-8">
+          <div class="text-3xl font-mono text-accent-light font-bold mb-4">02</div>
+          <h2 class="text-xl font-bold text-white mb-3">Otimização Nativa de Mídia</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Imagens e vetores são convertidos automaticamente para formatos modernos (AVIF e WebP) com dimensões explícitas, zerando deslocamentos de layout (CLS 0.00).
+          </p>
+        </Card>
+
+        <Card class="p-6 sm:p-8">
+          <div class="text-3xl font-mono text-accent-secondary font-bold mb-4">03</div>
+          <h2 class="text-xl font-bold text-white mb-3">Segurança Total e Menor Custo</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Sem banco de dados exposto e sem plugins de terceiros vulneráveis a ataques, sua empresa reduz custos de manutenção de segurança a praticamente zero.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <FAQAccordion
+    title="Dúvidas sobre o Desenvolvimento de Sites AXION"
+    items={faqs}
+  />
+
+  <DiagnosisCTA />
+</PageLayout>

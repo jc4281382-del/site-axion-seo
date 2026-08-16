@@ -1,0 +1,153 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/core/Container.astro';
+import SectionHeader from '../../components/core/SectionHeader.astro';
+import Card from '../../components/core/Card.astro';
+import Button from '../../components/core/Button.astro';
+import Badge from '../../components/core/Badge.astro';
+import SchemaService from '../../components/seo/SchemaService.astro';
+import SchemaBreadcrumbs from '../../components/seo/SchemaBreadcrumbs.astro';
+import DiagnosisCTA from '../../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "Soluções de Engenharia Web & Diagnóstico | AXION";
+const metaDescription = "Conheça nossas soluções de desenvolvimento de sites, arquitetura para Core Web Vitals, otimização para motores de busca gerativa (GEO IA) e automação comercial.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Soluções', url: '/solucoes' },
+];
+
+const solutionsList = [
+  {
+    id: 'desenvolvimento',
+    title: 'Desenvolvimento de Sites Institucionais Ultrarrápidos',
+    badge: 'Engenharia Front-End',
+    description: 'Criamos aplicações web estáticas baseadas no framework Astro, eliminando a lentidão e vulnerabilidades de CMSs antiquados. Seu site carrega em menos de 1 segundo mesmo em conexões móveis.',
+    link: '/solucoes/desenvolvimento-de-sites',
+    highlights: [
+      'Garantia contratual de métricas no verde (LCP < 0.8s, CLS < 0.1)',
+      'Código limpo sem dependência de plugins de terceiros',
+      'Compatibilidade total com dispositivos móveis e desktops',
+      'Hospedagem em CDNs globais com latência quase nula'
+    ]
+  },
+  {
+    id: 'b2b',
+    title: 'Sites Institucionais para Empresas B2B',
+    badge: 'Autoridade & Qualificação',
+    description: 'Projetados especificamente para gerar autoridade corporativa e qualificar tomadores de decisão em ciclos de vendas complexos. Clareza de posicionamento aliada a canais ágeis de contato.',
+    link: '/solucoes/site-institucional-b2b',
+    highlights: [
+      'Arquitetura de conteúdo consultiva sem jargões genéricos',
+      'Integração direta com o Agente de IA para WhatsApp',
+      'Estrutura modular de cases e soluções por segmento',
+      'Captação e triagem automatizada de leads 24/7'
+    ]
+  },
+  {
+    id: 'seo',
+    title: 'SEO Arquitetural & Generative Engine Optimization (GEO IA)',
+    badge: 'Visibilidade Orgânica',
+    description: 'Estruturação de dados avançada com Schema.org (JSON-LD), semântica estrita e hierarquia de URLs para posicionar sua empresa tanto no Google clássico quanto nos resumos do Gemini e ChatGPT.',
+    link: '/blog/geo-ia-generative-engine-optimization',
+    highlights: [
+      'Schema markup completo para Organization, Services e FAQs',
+      'Planejamento de redirecionamentos 301 sem perda de autoridade',
+      'Conteúdo estruturado para citações em ferramentas de busca com IA',
+      'Indexação prioritária no Google Search Console'
+    ]
+  },
+  {
+    id: 'diagnostico',
+    title: 'Auditoria & Diagnóstico Técnico de Performance',
+    badge: 'Ponto de Entrada Consultivo',
+    description: 'Análise minuciosa da infraestrutura atual do seu site. Identificamos com precisão os gargalos de velocidade, erros de rastreamento no Google e oportunidades de conversão antes de qualquer investimento.',
+    link: '/diagnostico',
+    highlights: [
+      'Laudo técnico completo entregue em até 24 horas',
+      'Relatório de Core Web Vitals no ambiente real (CrUX)',
+      'Avaliação de segurança e vulnerabilidade de código',
+      'Direcionamento claro de ROI para reconstrução'
+    ]
+  }
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaService
+      name="Desenvolvimento de Sites Institucionais e SEO Técnico"
+      serviceType="Web Engineering & SEO"
+      description={metaDescription}
+    />
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Soluções</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Portfólio de Soluções</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+          Engenharia web orientada a performance, dados e retorno sobre investimento.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed">
+          Nossas soluções não são pacotes genéricos de catálogo. São arquiteturas desenvolvidas sob medida para resolver os principais gargalos de captação e autoridade da sua empresa.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 bg-background-deep">
+    <Container size="lg">
+      <div class="space-y-12">
+        {solutionsList.map((sol, index) => (
+          <Card id={sol.id} class="p-8 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div class="lg:col-span-7">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl font-mono font-bold text-accent-light">0{index + 1}</span>
+                  <Badge variant="tech" size="sm">{sol.badge}</Badge>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                  {sol.title}
+                </h2>
+                <p class="text-base text-text-secondary leading-relaxed mb-6">
+                  {sol.description}
+                </p>
+                <div class="pt-2">
+                  <Button href={sol.link} variant="secondary" size="md">
+                    Explorar Detalhes &rarr;
+                  </Button>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5 bg-palette-grey-1100/70 p-6 rounded-2xl border border-border-subtle">
+                <h3 class="text-xs font-mono uppercase tracking-wider text-accent-light mb-4">Destaques da Entrega</h3>
+                <ul class="space-y-3">
+                  {sol.highlights.map((item) => (
+                    <li class="flex items-start gap-2.5 text-xs sm:text-sm text-text-muted">
+                      <svg class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-text-secondary">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <DiagnosisCTA />
+</PageLayout>

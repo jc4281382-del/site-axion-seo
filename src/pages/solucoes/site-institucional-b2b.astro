@@ -1,0 +1,127 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/core/Container.astro';
+import SectionHeader from '../../components/core/SectionHeader.astro';
+import Card from '../../components/core/Card.astro';
+import Button from '../../components/core/Button.astro';
+import Badge from '../../components/core/Badge.astro';
+import SchemaService from '../../components/seo/SchemaService.astro';
+import SchemaBreadcrumbs from '../../components/seo/SchemaBreadcrumbs.astro';
+import FAQAccordion from '../../components/sections/FAQAccordion.astro';
+import DiagnosisCTA from '../../components/sections/DiagnosisCTA.astro';
+
+const metaTitle = "Criação de Site Institucional B2B para Alta Conversão | AXION";
+const metaDescription = "Desenvolvimento de sites institucionais B2B projetados para transmitir autoridade corporativa, educar tomadores de decisão e gerar oportunidades comerciais.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Soluções', url: '/solucoes' },
+  { name: 'Site Institucional B2B', url: '/solucoes/site-institucional-b2b' },
+];
+
+const faqs = [
+  {
+    question: "O que é um site institucional B2B e como ele difere de um site comum?",
+    answer: "Um site institucional B2B é construído para atender jornadas de compra complexas, onde múltiplos tomadores de decisão (diretores, gestores técnicos, compras) avaliam a capacidade técnica, conformidade e confiabilidade da empresa antes do primeiro contato."
+  },
+  {
+    question: "Como o site auxilia na qualificação de leads antes da equipe comercial?",
+    answer: "Através da estrutura de conteúdo orientada a problemas específicos e da integração nativa com o Agente de IA para WhatsApp, que realiza a triagem prévia do perfil da empresa (segmento, faturamento e urgência)."
+  },
+  {
+    question: "Como proteger o ranqueamento ao migrar um site institucional corporativo?",
+    answer: "Executamos um mapeamento completo de URLs legadas e aplicamos redirecionamentos 301 individuais, preservando todos os links externos de autoridade conquistados ao longo dos anos."
+  }
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaService
+      name="Criação de Sites Institucionais B2B"
+      serviceType="B2B Corporate Web Development"
+      description={metaDescription}
+    />
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background relative overflow-hidden">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/solucoes" class="hover:text-white transition-colors">Soluções</a>
+        <span>/</span>
+        <span class="text-text-secondary">Site Institucional B2B</span>
+      </nav>
+
+      <div class="max-w-4xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Soluções Corporativas B2B</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Sites institucionais B2B que transformam autoridade técnica em demanda comercial.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed mb-8">
+          Substitua o antigo 'cartão de visitas digital' por uma infraestrutura web desenhada para encurtar ciclos de negociação, educar compradores qualificados e gerar reuniões comerciais.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <Button href="/diagnostico" variant="glow" size="lg">
+            Diagnóstico de Presença B2B &rarr;
+          </Button>
+          <Button
+            href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20um%20site%20institucional%20B2B"
+            target="_blank"
+            variant="secondary"
+            size="lg"
+          >
+            Falar pelo WhatsApp
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Diferenciais B2B -->
+  <section class="py-20 bg-background-deep">
+    <Container size="lg">
+      <SectionHeader
+        badge="Pilares de Conversão B2B"
+        title="Como construímos autoridade digital para vendas de alto valor"
+        subtitle="Elementos essenciais para empresas que vendem serviços ou produtos complexos para outras empresas."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white mb-3">Copywriting Consultivo</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Textos técnicos diretos, focados nas dores do tomador de decisão, sem chavões corporativos que cansam o leitor qualificado.
+          </p>
+        </Card>
+
+        <Card class="p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white mb-3">Triagem com IA 24/7</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Atendimento imediato no canal preferido pelo mercado brasileiro (WhatsApp), coletando dados essenciais antes da passagem para o time de vendas.
+          </p>
+        </Card>
+
+        <Card class="p-6 sm:p-8">
+          <h2 class="text-xl font-bold text-white mb-3">Auditoria de Credibilidade</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Dados estruturados de organização, casos de estudo auditáveis e certificações exibidos com destaque visual estratégico.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </section>
+
+  <FAQAccordion
+    title="Perguntas Frequentes sobre Sites B2B"
+    items={faqs}
+  />
+
+  <DiagnosisCTA />
+</PageLayout>
