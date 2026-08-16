@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/core/Container.astro';
+import SectionHeader from '../../components/core/SectionHeader.astro';
+import Card from '../../components/core/Card.astro';
+import Badge from '../../components/core/Badge.astro';
+import SchemaBreadcrumbs from '../../components/seo/SchemaBreadcrumbs.astro';
+import DiagnosisCTA from '../../components/sections/DiagnosisCTA.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const metaTitle = "Blog de Engenharia Web, SEO Técnico e GEO IA | AXION";
+const metaDescription = "Artigos práticos e análises profundas sobre performance web, Core Web Vitals, Generative Engine Optimization (GEO IA), arquitetura Astro e conversão digital.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog' },
+];
+---
+
+<PageLayout title={metaTitle} description={metaDescription}>
+  <Fragment slot="schema">
+    <SchemaBreadcrumbs items={breadcrumbs} />
+  </Fragment>
+
+  <!-- Hero Blog -->
+  <section class="pt-20 pb-16 md:pt-28 md:pb-20 border-b border-border-subtle bg-background">
+    <Container size="lg">
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumbs">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">Blog</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <div class="mb-4">
+          <Badge variant="primary" size="md">Artigos Técnicos &amp; Mercado</Badge>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Engenharia de software, SEO e inteligência artificial aplicados à web.
+        </h1>
+        <p class="text-lg sm:text-xl text-text-secondary leading-relaxed">
+          Conteúdo autoral e sem clichês para desenvolvedores, tomadores de decisão e profissionais que buscam performance e conversão real.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="py-20 bg-background-deep">
+    <Container size="lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => {
+          const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+          }).format(post.data.publishDate);
+
+          return (
+            <Card
+              as="article"
+              class="flex flex-col justify-between group h-full"
+            >
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-4">
+                  <Badge variant="primary" size="sm">{post.data.category}</Badge>
+                  <span class="text-xs text-text-muted">{post.data.readingTime || '5 min'}</span>
+                </div>
+
+                <a href={`/blog/${post.slug}`} class="block group-hover:text-accent-light transition-colors">
+                  <h2 class="text-xl font-bold text-white mb-3 line-clamp-2 leading-snug group-hover:text-accent-light">
+                    {post.data.title}
+                  </h2>
+                </a>
+
+                <p class="text-sm text-text-secondary line-clamp-3 mb-6 leading-relaxed">
+                  {post.data.description}
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-border-subtle flex items-center justify-between text-xs text-text-muted">
+                <time datetime={post.data.publishDate.toISOString()}>{formattedDate}</time>
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="font-semibold text-accent-light group-hover:text-white flex items-center gap-1 transition-colors"
+                >
+                  <span>Ler artigo</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+    </Container>
+  </section>
+
+  <DiagnosisCTA />
+</PageLayout>
